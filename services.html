@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Uluju Cleaning Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Fixed Navigation - No gap at top */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.98), rgba(20, 184, 166, 0.98));
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 5px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .burger:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        /* Hero Section - Adjusted for fixed nav */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.85), rgba(20, 184, 166, 0.85)),
+                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 0.8s ease 0.4s both;
+            margin-bottom: 2rem;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-indicator span {
+            display: block;
+            width: 30px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .scroll-indicator span::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 10px;
+            background: white;
+            border-radius: 2px;
+            animation: scroll 2s infinite;
+        }
+
+        /* Services Overview */
+        .services-overview {
+            padding: 8rem 5%;
+            background: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .overview-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #107c5b;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #107c5b, #14b8a6);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .overview-highlight {
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.08), rgba(20, 184, 166, 0.08));
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border-left: 4px solid #14b8a6;
+            text-align: left;
+        }
+
+        .overview-highlight p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Service Categories */
+        .service-category {
+            padding: 8rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-category:nth-child(even) {
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.03), rgba(20, 184, 166, 0.03));
+        }
+
+        .service-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16, 124, 91, 0.2), transparent);
+        }
+
+        .category-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+        }
+
+        .category-image {
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        .category-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.2), rgba(20, 184, 166, 0.2));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .category-container:hover .category-image::before {
+            opacity: 1;
+        }
+
+        .category-container:hover .category-image {
+            transform: translateY(-10px);
+        }
+
+        .category-content {
+            position: relative;
+        }
+
+        .service-badge {
+            display: inline-block;
+            padding: 0.7rem 2rem;
+            background: linear-gradient(135deg, #107c5b, #14b8a6);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(16, 124, 91, 0.3);
+            transition: all 0.3s;
+        }
+
+        .service-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(16, 124, 91, 0.4);
+        }
+
+        .category-content h2 {
+            font-size: 2.5rem;
+            color: #107c5b;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            position: relative;
+        }
+
+        .category-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #14b8a6;
+            border-radius: 2px;
+        }
+
+        .category-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+
+        .category-content ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .category-content li {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.05), rgba(20, 184, 166, 0.05));
+            border-left: 4px solid #14b8a6;
+            border-radius: 8px;
+            transition: all 0.4s;
+            position: relative;
+            padding-left: 3.5rem;
+            cursor: pointer;
+        }
+
+        .category-content li::before {
+            content: '✓';
+            position: absolute;
+            left: 1.5rem;
+            color: #14b8a6;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .category-content li:hover {
+            transform: translateX(15px);
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.12), rgba(20, 184, 166, 0.12));
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .category-content li:hover::before {
+            transform: scale(1.2);
+        }
+
+        /* Reverse layout for alternating sections */
+        .category-container.reverse .category-content {
+            order: 1;
+        }
+
+        .category-container.reverse .category-image {
+            order: 2;
+        }
+
+        /* Deep Cleaning Details */
+        .deep-cleaning-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.03), rgba(20, 184, 166, 0.03));
+            position: relative;
+        }
+
+        .deep-cleaning-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cleaning-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .cleaning-intro p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .cleaning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .cleaning-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border-top: 6px solid #14b8a6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cleaning-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.02), rgba(20, 184, 166, 0.02));
+        }
+
+        .cleaning-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(16, 124, 91, 0.15);
+            border-top-color: #107c5b;
+        }
+
+        .cleaning-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .cleaning-card:hover .cleaning-icon {
+            transform: scale(1.1);
+        }
+
+        .cleaning-card h3 {
+            color: #107c5b;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .cleaning-card ul {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cleaning-card li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+            transition: padding-left 0.3s;
+        }
+
+        .cleaning-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #14b8a6;
+            font-weight: bold;
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        .cleaning-card:hover li::before {
+            transform: scale(1.2);
+        }
+
+        .cleaning-card:hover li {
+            padding-left: 2.5rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, #107c5b, #14b8a6);
+            color: white;
+            position: relative;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1600') center/cover;
+            opacity: 0.1;
+        }
+
+        .process-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .process-step:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+        }
+
+        .step-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .process-step h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, #0a5a42, #107c5b);
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: white;
+            color: #107c5b;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: left 0.7s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a4a35, #0d6349);
+            color: white;
+            text-align: center;
+            padding: 3rem 5%;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) translateY(20px);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .category-container,
+            .category-container.reverse {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .category-container.reverse .category-content,
+            .category-container.reverse .category-image {
+                order: unset;
+            }
+
+            .category-image {
+                height: 400px;
+                order: -1;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .burger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                flex-direction: column;
+                background: linear-gradient(135deg, rgba(16, 124, 91, 0.98), rgba(20, 184, 166, 0.98));
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: left 0.3s ease;
+                padding: 6rem 0;
+                gap: 0;
+                z-index: 999;
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                width: 80%;
+                margin: 0 auto;
+                font-size: 1.2rem;
+            }
+
+            .burger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .burger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .category-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .cleaning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .cta-content p {
+                font-size: 1.1rem;
+            }
+
+            .hero,
+            .services-overview,
+            .service-category,
+            .deep-cleaning-section,
+            .process-section,
+            .cta-section {
+                padding: 6rem 3%;
+            }
+
+            .cleaning-card {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 0.8rem 3%;
+            }
+
+            .category-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .process-step {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Uluju</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Services</h1>
+            <p>Comprehensive Cleaning Solutions Tailored to Your Needs</p>
+        </div>
+        <div class="scroll-indicator" onclick="scrollToSection('services')">
+            <span></span>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="overview-container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <p class="section-subtitle">We offer holistic garbage collection, sanitary bins and janitorial cleaning services to commercial, industrial and residential properties.</p>
+            
+            <div class="overview-highlight">
+                <p>Our cleaning service focuses on client-specific and measurable outcomes, which directly participate in the improvement of your performance, reputation, and competitiveness. Every service is designed with precision and delivered with excellence.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commercial Cleaning Services -->
+    <section id="services" class="service-category">
+        <div class="category-container">
+            <div class="category-content">
+                <span class="service-badge">Commercial Services</span>
+                <h2>Commercial & Industrial Cleaning</h2>
+                <p>Professional cleaning services designed for commercial and industrial properties. We focus on delivering measurable outcomes that enhance your business performance, reputation, and competitive edge.</p>
+                <ul>
+                    <li>Comprehensive janitorial services</li>
+                    <li>Regular supply maintenance and replenishment</li>
+                    <li>Professional customer and visitor service</li>
+                    <li>Organization and maintenance of common office areas</li>
+                    <li>Maintenance of professional standards throughout</li>
+                    <li>Customized cleaning schedules</li>
+                </ul>
+            </div>
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800');"></div>
+        </div>
+    </section>
+
+    <!-- Executive Office Cleaning -->
+    <section class="service-category">
+        <div class="category-container reverse">
+            <div class="category-content">
+                <span class="service-badge">Executive Solutions</span>
+                <h2>Executive Office Management</h2>
+                <p>Premium office cleaning and management services tailored specifically for executive environments. We create and maintain professional, welcoming spaces that reflect your company's standards.</p>
+                <ul>
+                    <li>Professional greeting of clients and visitors</li>
+                    <li>Efficient supply chain management</li>
+                    <li>Premium customer service delivery</li>
+                    <li>Comprehensive reception management</li>
+                    <li>Strategic front office operations</li>
+                    <li>Executive-level janitorial services</li>
+                </ul>
+            </div>
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800');"></div>
+        </div>
+    </section>
+
+    <!-- High Window Cleaning -->
+    <section class="service-category">
+        <div class="category-container">
+            <div class="category-content">
+                <span class="service-badge">Specialized Services</span>
+                <h2>High-Rise Window Cleaning</h2>
+                <p>Sparkling clean windows that enhance your property's appearance and value. Our specialized team uses state-of-the-art equipment and techniques to deliver flawless results with safety as our top priority.</p>
+                <ul>
+                    <li>Specialized, certified window cleaning technicians</li>
+                    <li>Advanced cleaning techniques and technology</li>
+                    <li>Modern, high-performance equipment</li>
+                    <li>Rigorous safety protocols and training</li>
+                    <li>Streak-free, spotless finishing</li>
+                    <li>Both interior and exterior window services</li>
+                </ul>
+            </div>
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800');"></div>
+        </div>
+    </section>
+
+    <!-- Gardening & Landscaping -->
+    <section class="service-category">
+        <div class="category-container reverse">
+            <div class="category-content">
+                <span class="service-badge">Landscape Services</span>
+                <h2>Commercial Landscaping & Gardening</h2>
+                <p>Transform your outdoor spaces into beautiful, productive environments that reflect your business values. Our proactive maintenance approach ensures your landscape always makes the right impression.</p>
+                <ul>
+                    <li>Flexible monthly or seasonal maintenance plans</li>
+                    <li>Professional weeding and lawn care services</li>
+                    <li>Expert trimming and pruning techniques</li>
+                    <li>Proactive maintenance and improvement planning</li>
+                    <li>Ecological and sustainable practices</li>
+                    <li>Seasonal planting and design services</li>
+                </ul>
+            </div>
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800');"></div>
+        </div>
+    </section>
+
+    <!-- Waste Management -->
+    <section class="service-category">
+        <div class="category-container">
+            <div class="category-content">
+                <span class="service-badge">Environmental Solutions</span>
+                <h2>Comprehensive Waste Management</h2>
+                <p>Responsible waste collection and management services for all types of properties. We provide complete solutions that prioritize environmental responsibility and regulatory compliance.</p>
+                <ul>
+                    <li>Paper and general waste collection</li>
+                    <li>Construction and demolition waste removal</li>
+                    <li>Medical and healthcare waste management</li>
+                    <li>Restaurant and food service waste solutions</li>
+                    <li>Industrial waste collection services</li>
+                    <li>Recycling program implementation</li>
+                </ul>
+            </div>
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800');"></div>
+        </div>
+    </section>
+
+    <!-- Sanitary Bins -->
+    <section class="service-category">
+        <div class="category-container reverse">
+            <div class="category-content">
+                <span class="service-badge">Hygiene Services</span>
+                <h2>Sanitary Bins & Hygiene Solutions</h2>
+                <p>Essential hygiene services that protect both your environment and public health. We ensure proper sanitation through regular maintenance and environmentally responsible disposal practices.</p>
+                <ul>
+                    <li>Regular scheduled servicing and maintenance</li>
+                    <li>Professional and hygienic disposal solutions</li>
+                    <li>Environmental protection compliance</li>
+                    <li>Drainage and sewer system protection</li>
+                    <li>Maintenance of safe, hygienic environments</li>
+                    <li>Emergency response services</li>
+                </ul>
+            </div>
+            <div class="category-image" style="background-image: url('https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800');"></div>
+        </div>
+    </section>
+
+    <!-- Deep Cleaning Section -->
+    <section class="deep-cleaning-section">
+        <div class="deep-cleaning-container">
+            <h2 class="section-title">General & Deep Cleaning Services</h2>
+            <p class="section-subtitle">Comprehensive cleaning solutions for all property types and commercial spaces</p>
+
+            <div class="cleaning-intro">
+                <p>Our general cleaning includes thorough cleaning of bedrooms, bathrooms, kitchens, and living areas. We use premium cleaning products and techniques to ensure every surface is immaculate, from walls and fixtures to floors and hidden corners.</p>
+            </div>
+
+            <div class="cleaning-grid">
+                <div class="cleaning-card">
+                    <div class="cleaning-icon">🛏️</div>
+                    <h3>Bedroom Excellence</h3>
+                    <ul>
+                        <li>Comprehensive wall stain removal</li>
+                        <li>Window grill and frame deep cleaning</li>
+                        <li>Crystal clear glass cleaning</li>
+                        <li>Shelves and cabinet interior cleaning</li>
+                        <li>Professional vacuum and dust removal</li>
+                        <li>Mattress and upholstery cleaning</li>
+                    </ul>
+                </div>
+
+                <div class="cleaning-card">
+                    <div class="cleaning-icon">🚿</div>
+                    <h3>Bathroom Perfection</h3>
+                    <ul>
+                        <li>Complete wall and tile deep cleaning</li>
+                        <li>Streak-free mirror and glass cleaning</li>
+                        <li>Floor grout and tile restoration</li>
+                        <li>All bathroom fittings sanitization</li>
+                        <li>Stubborn stain removal techniques</li>
+                        <li>Mold and mildew prevention</li>
+                    </ul>
+                </div>
+
+                <div class="cleaning-card">
+                    <div class="cleaning-icon">🍳</div>
+                    <h3>Kitchen Sanitation</h3>
+                    <ul>
+                        <li>Cabinet and shelf deep cleaning</li>
+                        <li>Sink and countertop sanitization</li>
+                        <li>Anti-bacterial solution application</li>
+                        <li>Appliance interior and exterior cleaning</li>
+                        <li>Floor degreasing and polishing</li>
+                        <li>Exhaust and ventilation cleaning</li>
+                    </ul>
+                </div>
+
+                <div class="cleaning-card">
+                    <div class="cleaning-icon">🌿</div>
+                    <h3>Outdoor Transformation</h3>
+                    <ul>
+                        <li>Balcony and patio deep cleaning</li>
+                        <li>Outdoor furniture restoration</li>
+                        <li>Pavement and walkway pressure washing</li>
+                        <li>Decorative item cleaning and maintenance</li>
+                        <li>Complete outdoor area organization</li>
+                        <li>Seasonal outdoor maintenance plans</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="process-container">
+            <h2 class="section-title" style="color: white;">Our Service Process</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">How We Deliver Exceptional Results Every Time</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Consultation & Assessment</h4>
+                    <p>We begin by understanding your specific needs and conducting a thorough site assessment.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Customized Plan</h4>
+                    <p>Developing a tailored cleaning strategy that aligns perfectly with your requirements and schedule.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Professional Execution</h4>
+                    <p>Our trained team implements the plan with precision, using professional equipment and techniques.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Quality Assurance</h4>
+                    <p>Rigorous quality checks and client feedback to ensure complete satisfaction with every service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Transform Your Space Today</h2>
+            <p>Experience the difference of professional cleaning services designed to exceed your expectations and enhance your environment.</p>
+            <div class="cta-buttons">
+                <a href="mailto:info@ulujuinvest.co.za" class="cta-button">Get Your Free Quote</a>
+                <a href="tel:0814902033" class="cta-button secondary">Speak With Our Team</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2018 - 2026 Uluju Cleaning Solutions. All rights reserved.</p>
+        <div class="contact-info">
+            <span>📧 info@ulujuinvest.co.za</span>
+            <span>📱 081 490 2033</span>
+            <span>📍 13 Neven Street, Modelpark, 1034</span>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        const body = document.body;
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    burger.classList.remove('active');
+                    body.style.overflow = '';
+                    
+                    // Scroll to target
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll indicator functionality
+        function scrollToSection(sectionId) {
+            const target = document.getElementById(sectionId);
+            if (target) {
+                const navHeight = document.querySelector('nav').offsetHeight;
+                const targetPosition = target.offsetTop - navHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'linear-gradient(135deg, rgba(16, 124, 91, 1), rgba(20, 184, 166, 1))';
+                nav.style.boxShadow = '0 5px 25px rgba(0,0,0,0.15)';
+            } else {
+                nav.style.background = 'linear-gradient(135deg, rgba(16, 124, 91, 0.98), rgba(20, 184, 166, 0.98))';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.category-content, .category-image, .cleaning-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Enhanced hover effects for service items
+        document.querySelectorAll('.category-content li').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(15px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Service category animation on hover
+        document.querySelectorAll('.category-container').forEach(container => {
+            container.addEventListener('mouseenter', function() {
+                const image = this.querySelector('.category-image');
+                if (image) {
+                    image.style.transform = 'translateY(-10px)';
+                }
+            });
+            
+            container.addEventListener('mouseleave', function() {
+                const image = this.querySelector('.category-image');
+                if (image) {
+                    image.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

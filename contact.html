@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Uluju Cleaning Solutions</title>
+    <style>
+        /* Importing the same styling from the homepage */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.95), rgba(20, 184, 166, 0.95));
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .burger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: all 0.3s;
+        }
+
+        /* Hero Section */
+        .contact-hero {
+            height: 60vh;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.85), rgba(20, 184, 166, 0.85)),
+                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+        }
+
+        .contact-hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Contact Main Section */
+        .contact-main {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #107c5b;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 124, 91, 0.2);
+        }
+
+        .contact-info-card h3 {
+            color: #107c5b;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            margin: 1.5rem 0;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.05), rgba(20, 184, 166, 0.05));
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.1), rgba(20, 184, 166, 0.1));
+        }
+
+        .contact-item h4 {
+            color: #107c5b;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a, .contact-item p {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .contact-item a:hover {
+            color: #14b8a6;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #107c5b;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #14b8a6;
+            box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #107c5b, #14b8a6);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(16, 124, 91, 0.4);
+        }
+
+        /* Service Areas */
+        .service-areas {
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, rgba(16, 124, 91, 0.05), rgba(20, 184, 166, 0.05));
+            text-align: center;
+        }
+
+        .areas-grid {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .area-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .area-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(16, 124, 91, 0.2);
+        }
+
+        .area-card h4 {
+            color: #107c5b;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 0;
+            height: 400px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #107c5b, #14b8a6);
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: linear-gradient(135deg, #107c5b, #14b8a6);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            .burger.active div:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .burger.active div:nth-child(2) {
+                opacity: 0;
+            }
+
+            .burger.active div:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container,
+            .areas-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info-card,
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                padding: 1rem 3%;
+            }
+
+            .contact-hero,
+            .contact-main,
+            .service-areas {
+                padding: 4rem 3%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Uluju</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="contact-hero-content">
+            <h1>Contact Us</h1>
+            <p>Get in touch with Uluju Cleaning Solutions for premium hygiene and sanitation services</p>
+            <p>We're here to answer your questions and provide customized cleaning solutions</p>
+        </div>
+    </section>
+
+    <!-- Contact Main Section -->
+    <section class="contact-main">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">We're ready to serve your cleaning needs with excellence</p>
+        
+        <div class="contact-container">
+            <!-- Contact Information -->
+            <div class="contact-info-card">
+                <h3>📞 Contact Information</h3>
+                <p>Reach out to us through any of these channels. Our team is ready to assist you with your cleaning needs.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <h4>📧 Email Address</h4>
+                        <a href="mailto:info@ulujuinvest.co.za">info@ulujuinvest.co.za</a>
+                        <p>For general inquiries and quotes</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>📱 Phone Number</h4>
+                        <a href="tel:0814902033">081 490 2033</a>
+                        <p>Available during business hours</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>📍 Office Address</h4>
+                        <p>13 Neven Street, Modelpark<br>1034</p>
+                        <p>Nkangala District, South Africa</p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h4>🕒 Business Hours</h4>
+                        <p>Monday - Friday: 7:00 AM - 6:00 PM</p>
+                        <p>Saturday: 8:00 AM - 1:00 PM</p>
+                        <p>Sunday: Emergency services only</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h3 style="color: #107c5b; margin-bottom: 2rem; font-size: 1.8rem;">Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="081 123 4567">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="commercial">Commercial Cleaning</option>
+                            <option value="residential">Residential Cleaning</option>
+                            <option value="industrial">Industrial Cleaning</option>
+                            <option value="gardening">Gardening & Landscaping</option>
+                            <option value="waste">Waste Management</option>
+                            <option value="sanitary">Sanitary Bins Services</option>
+                            <option value="windows">High Window Cleaning</option>
+                            <option value="deep">Deep Cleaning</option>
+                            <option value="other">Other Services</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="property">Property Type</label>
+                        <select id="property" name="property">
+                            <option value="">Select property type</option>
+                            <option value="office">Office Building</option>
+                            <option value="retail">Retail Store</option>
+                            <option value="industrial">Industrial Facility</option>
+                            <option value="residential">Residential Home</option>
+                            <option value="apartment">Apartment Complex</option>
+                            <option value="hospitality">Hotel/Restaurant</option>
+                            <option value="medical">Medical Facility</option>
+                            <option value="educational">School/University</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us about your cleaning needs, property size, and any specific requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="service-areas">
+        <h2 class="section-title">Areas We Serve</h2>
+        <p class="section-subtitle">Providing premium cleaning solutions throughout Nkangala district and beyond</p>
+        
+        <div class="areas-grid">
+            <div class="area-card">
+                <h4>🏙️ Primary Service Area</h4>
+                <p>Nkangala District Municipality</p>
+                <p>Middelburg • Witbank • eMalahleni</p>
+            </div>
+            
+            <div class="area-card">
+                <h4>🏘️ Surrounding Areas</h4>
+                <p>Greater Mpumalanga Region</p>
+                <p>Steve Tshwete • Emakhazeni • Thembisile Hani</p>
+            </div>
+            
+            <div class="area-card">
+                <h4>🏢 Commercial Hubs</h4>
+                <p>Business Districts • Industrial Parks</p>
+                <p>Shopping Centers • Office Complexes</p>
+            </div>
+            
+            <div class="area-card">
+                <h4>🏡 Residential Areas</h4>
+                <p>Modelpark • All Residential Communities</p>
+                <p>Gated Estates • Apartment Buildings</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <!-- Embedded Google Map - Replace with actual coordinates -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3590.1234567890123!2d29.12345678901234!3d-25.123456789012345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1eebf1234567890%3A0xabcdef123456789!2s13%20Neven%20St%2C%20Modelpark%2C%20Middelburg%2C%201034!5e0!3m2!1sen!2sza!4v1234567890123!5m2!1sen!2sza" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2018 - 2026 Uluju Cleaning Solutions. All rights reserved.</p>
+        <p style="margin-top: 1rem; opacity: 0.9;">Premium Hygiene & Sanitation Services | Nkangala District & Beyond</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">13 Neven Street, Modelpark, 1034 | info@ulujuinvest.co.za | 081 490 2033</p>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            burger.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                burger.classList.remove('active');
+            });
+        });
+
+        // Form Submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                service: document.getElementById('service').value,
+                property: document.getElementById('property').value,
+                message: document.getElementById('message').value
+            };
+            
+            // In a real implementation, you would send this data to a server
+            // For now, we'll show a success message
+            alert('Thank you for your message! We will contact you within 24 hours.\n\n' +
+                  'Name: ' + formData.name + '\n' +
+                  'Service Interest: ' + (formData.service || 'Not specified') + '\n\n' +
+                  'We appreciate your interest in Uluju Cleaning Solutions!');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
