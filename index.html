@@ -18,11 +18,21 @@
             overflow-x: hidden;
         }
 
+        /* Color Variables */
+        :root {
+            --dark-teal: #0a3d3f;
+            --navy-blue: #1a2b4a;
+            --teal-accent: #1d6d6f;
+            --gold: #d4af37;
+            --bronze: #cd7f32;
+            --light-gold: #f4e4a6;
+        }
+
         /* Navigation */
         nav {
             position: fixed;
             width: 100%;
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.95), rgba(20, 184, 166, 0.95));
+            background: linear-gradient(135deg, rgba(10, 61, 63, 0.95), rgba(26, 43, 74, 0.95));
             padding: 1rem 5%;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
@@ -31,7 +41,7 @@
 
         nav.scrolled {
             padding: 0.5rem 5%;
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.98), rgba(20, 184, 166, 0.98));
+            background: linear-gradient(135deg, rgba(10, 61, 63, 0.98), rgba(26, 43, 74, 0.98));
             box-shadow: 0 4px 30px rgba(0,0,0,0.2);
         }
 
@@ -46,7 +56,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: white;
+            color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 2px;
             position: relative;
@@ -61,7 +71,7 @@
             left: 0;
             width: 0;
             height: 3px;
-            background: white;
+            background: var(--bronze);
             transition: width 0.3s ease;
         }
 
@@ -71,7 +81,7 @@
 
         .logo:hover {
             transform: scale(1.05);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         .nav-links {
@@ -98,7 +108,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.2);
+            background: rgba(212, 175, 55, 0.2);
             transition: left 0.3s ease;
         }
 
@@ -109,6 +119,7 @@
         .nav-links a:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: var(--light-gold);
         }
 
         .burger {
@@ -126,11 +137,12 @@
             border-radius: 3px;
         }
 
-        /* Hero Section */
+        /* Main Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.85), rgba(20, 184, 166, 0.85)),
-                        url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1600') center/cover;
+            background: 
+                linear-gradient(135deg, rgba(10, 61, 63, 0.85), rgba(26, 43, 74, 0.85)),
+                url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -147,7 +159,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: moveBackground 20s linear infinite;
         }
@@ -174,6 +186,10 @@
             animation: slideInFromLeft 1s ease 0.2s backwards;
         }
 
+        .hero h1 span {
+            color: var(--gold);
+        }
+
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 2rem;
@@ -184,8 +200,8 @@
         .cta-button {
             display: inline-block;
             padding: 1rem 2.5rem;
-            background: white;
-            color: #107c5b;
+            background: linear-gradient(to right, var(--gold), var(--bronze));
+            color: var(--dark-teal);
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
@@ -195,6 +211,8 @@
             position: relative;
             overflow: hidden;
             animation: fadeInUp 1s ease 0.8s backwards;
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button::before {
@@ -204,7 +222,7 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(16, 124, 91, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.6s ease, height 0.6s ease;
@@ -217,12 +235,55 @@
 
         .cta-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            background: #f0f0f0;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            color: var(--navy-blue);
         }
 
         .cta-button:active {
             transform: translateY(-2px) scale(1.02);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--dark-teal), var(--navy-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--teal-accent);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease 0.2s;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-subtitle.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Floating elements */
@@ -255,10 +316,13 @@
             50% { transform: translateY(-20px) rotate(5deg); }
         }
 
-        /* About Section */
+        /* About Section with Hero Background */
         .about {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background: 
+                linear-gradient(135deg, rgba(10, 61, 63, 0.9), rgba(26, 43, 74, 0.9)),
+                url('./assets/herohome.png') center/cover;
+            color: white;
             position: relative;
             overflow: hidden;
         }
@@ -270,7 +334,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
             animation: shimmer 3s infinite;
         }
 
@@ -286,38 +350,6 @@
             z-index: 1;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: #107c5b;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .section-title.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 3rem;
-            font-size: 1.1rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease 0.2s;
-        }
-
-        .section-subtitle.animate {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .about-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -326,13 +358,15 @@
         }
 
         .about-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 2.5rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             opacity: 0;
             transform: translateY(50px);
         }
@@ -349,7 +383,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(90deg, #107c5b, #14b8a6);
+            background: linear-gradient(90deg, var(--gold), var(--bronze));
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.5s ease;
@@ -366,7 +400,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(16, 124, 91, 0.05), rgba(20, 184, 166, 0.05));
+            background: linear-gradient(rgba(212, 175, 55, 0.1), rgba(205, 127, 50, 0.1));
             transition: top 0.5s ease;
         }
 
@@ -376,11 +410,11 @@
 
         .about-card:hover {
             transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(16, 124, 91, 0.3);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
         .about-card h3 {
-            color: #107c5b;
+            color: var(--gold);
             margin-bottom: 1rem;
             font-size: 1.5rem;
             position: relative;
@@ -395,12 +429,17 @@
         .about-card p {
             position: relative;
             z-index: 1;
+            color: #f0f0f0;
         }
 
-        /* Services Section */
+        /* Services Section with Hero Background */
         .services {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.05), rgba(20, 184, 166, 0.05));
+            background: 
+                linear-gradient(135deg, rgba(10, 61, 63, 0.85), rgba(26, 43, 74, 0.85)),
+                url('./assets/hero1home.png') center/cover;
+            color: white;
+            position: relative;
         }
 
         .services-grid {
@@ -413,7 +452,7 @@
         }
 
         .service-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
@@ -423,6 +462,8 @@
             transform: scale(0.9) rotateX(10deg);
             transform-style: preserve-3d;
             perspective: 1000px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .service-card.animate {
@@ -432,7 +473,7 @@
 
         .service-card:hover {
             transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 20px 50px rgba(16, 124, 91, 0.3);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.3);
         }
 
         .service-image {
@@ -470,7 +511,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.7), rgba(20, 184, 166, 0.7));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(205, 127, 50, 0.2));
             opacity: 0;
             transition: opacity 0.5s ease;
         }
@@ -485,7 +526,7 @@
         }
 
         .service-content h3 {
-            color: #107c5b;
+            color: var(--gold);
             margin-bottom: 1rem;
             font-size: 1.4rem;
             transition: all 0.3s ease;
@@ -499,11 +540,16 @@
             right: -25px;
             opacity: 0;
             transition: all 0.3s ease;
+            color: var(--bronze);
         }
 
         .service-card:hover .service-content h3::after {
             opacity: 1;
             right: -30px;
+        }
+
+        .service-content p, .service-content li {
+            color: #f0f0f0;
         }
 
         .service-content ul {
@@ -527,7 +573,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: #14b8a6;
+            color: var(--bronze);
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -536,12 +582,12 @@
             transform: scale(1.3) rotate(360deg);
         }
 
-        /* Values Section */
+        /* Values Section with Hero Background */
         .values {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, #107c5b, #14b8a6),
-                        url('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?w=1600') center/cover;
-            background-blend-mode: overlay;
+            background: 
+                linear-gradient(135deg, rgba(10, 61, 63, 0.9), rgba(26, 43, 74, 0.9)),
+                url('https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
             color: white;
             text-align: center;
             position: relative;
@@ -555,7 +601,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.05) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.05) 50%, transparent 70%);
             animation: slideGradient 3s ease infinite;
         }
 
@@ -579,7 +625,7 @@
             padding: 2rem;
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(212, 175, 55, 0.2);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
@@ -599,7 +645,7 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255,255,255,0.2);
+            background: rgba(212, 175, 55, 0.2);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: all 0.6s ease;
@@ -613,13 +659,14 @@
         .value-item:hover {
             background: rgba(255,255,255,0.25);
             transform: translateY(-10px) scale(1.05);
-            border-color: rgba(255,255,255,0.5);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.3);
         }
 
         .value-item h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+            color: var(--gold);
             position: relative;
             z-index: 1;
             transition: all 0.3s ease;
@@ -627,7 +674,7 @@
 
         .value-item:hover h3 {
             transform: scale(1.1);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         .value-item p {
@@ -635,10 +682,14 @@
             z-index: 1;
         }
 
-        /* Contact Section */
+        /* Contact Section with Hero Background */
         .contact {
             padding: 6rem 5%;
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            background: 
+                linear-gradient(135deg, rgba(10, 61, 63, 0.9), rgba(26, 43, 74, 0.9)),
+                url('./assets/hero2home.png') center/cover;
+            color: white;
+            position: relative;
         }
 
         .contact-container {
@@ -650,13 +701,15 @@
         }
 
         .contact-info {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .contact-info::before {
@@ -666,7 +719,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(16, 124, 91, 0.05), transparent);
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
             transition: left 0.7s ease;
         }
 
@@ -676,13 +729,13 @@
 
         .contact-info:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(16, 124, 91, 0.2);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
         }
 
         .contact-item {
             margin: 2rem 0;
             padding: 1.5rem;
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.05), rgba(20, 184, 166, 0.05));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(205, 127, 50, 0.1));
             border-radius: 10px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
@@ -696,7 +749,7 @@
             top: 0;
             height: 100%;
             width: 4px;
-            background: linear-gradient(to bottom, #107c5b, #14b8a6);
+            background: linear-gradient(to bottom, var(--gold), var(--bronze));
             transform: scaleY(0);
             transition: transform 0.3s ease;
         }
@@ -707,12 +760,12 @@
 
         .contact-item:hover {
             transform: translateX(15px) scale(1.02);
-            background: linear-gradient(135deg, rgba(16, 124, 91, 0.15), rgba(20, 184, 166, 0.15));
-            box-shadow: 0 5px 15px rgba(16, 124, 91, 0.2);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(205, 127, 50, 0.2));
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
         }
 
         .contact-item h3 {
-            color: #107c5b;
+            color: var(--gold);
             margin-bottom: 0.5rem;
             transition: all 0.3s ease;
         }
@@ -721,8 +774,8 @@
             transform: translateX(5px);
         }
 
-        .contact-item a {
-            color: #14b8a6;
+        .contact-item a, .contact-item p {
+            color: var(--light-gold);
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
@@ -736,7 +789,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #14b8a6;
+            background: var(--bronze);
             transition: width 0.3s ease;
         }
 
@@ -745,12 +798,12 @@
         }
 
         .contact-item a:hover {
-            color: #107c5b;
+            color: white;
         }
 
         /* Footer */
         footer {
-            background: linear-gradient(135deg, #107c5b, #14b8a6);
+            background: linear-gradient(135deg, var(--dark-teal), var(--navy-blue));
             color: white;
             text-align: center;
             padding: 2rem 5%;
@@ -765,7 +818,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 1px, transparent 1px);
             background-size: 30px 30px;
             animation: rotateBackground 30s linear infinite;
         }
@@ -783,7 +836,7 @@
 
         footer p:hover {
             transform: scale(1.05);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
 
         /* Scroll to top button */
@@ -793,8 +846,8 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, #107c5b, #14b8a6);
-            color: white;
+            background: linear-gradient(135deg, var(--gold), var(--bronze));
+            color: var(--navy-blue);
             border: none;
             border-radius: 50%;
             cursor: pointer;
@@ -803,6 +856,11 @@
             transition: all 0.3s ease;
             z-index: 999;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
         .scroll-top.visible {
@@ -812,13 +870,7 @@
 
         .scroll-top:hover {
             transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 10px 25px rgba(16, 124, 91, 0.4);
-        }
-
-        .scroll-top::before {
-            content: '↑';
-            font-size: 1.5rem;
-            font-weight: bold;
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
         }
 
         /* Animations */
@@ -869,7 +921,7 @@
                 right: -100%;
                 top: 70px;
                 flex-direction: column;
-                background: linear-gradient(135deg, #107c5b, #14b8a6);
+                background: linear-gradient(135deg, var(--dark-teal), var(--navy-blue));
                 width: 100%;
                 text-align: center;
                 transition: 0.3s;
@@ -973,9 +1025,9 @@
             <div class="logo">Uluju</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="burger">
                 <div></div>
@@ -985,14 +1037,14 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Main Hero Section -->
     <section id="home" class="hero">
-        <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: rgba(255,255,255,0.1); border-radius: 50%;" class="floating-element"></div>
-        <div style="position: absolute; top: 60%; right: 15%; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%;" class="floating-element"></div>
-        <div style="position: absolute; bottom: 20%; left: 20%; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%;" class="floating-element"></div>
+        <div style="position: absolute; top: 20%; left: 10%; width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%;" class="floating-element"></div>
+        <div style="position: absolute; top: 60%; right: 15%; width: 80px; height: 80px; background: rgba(205, 127, 50, 0.1); border-radius: 50%;" class="floating-element"></div>
+        <div style="position: absolute; bottom: 20%; left: 20%; width: 120px; height: 120px; background: rgba(212, 175, 55, 0.1); border-radius: 50%;" class="floating-element"></div>
         
         <div class="hero-content">
-            <h1>Uluju Cleaning Solutions</h1>
+            <h1><span>Uluju</span> Cleaning Solutions</h1>
             <p>Premium Hygiene & Sanitation Services Since 2018</p>
             <p>Innovative. Efficient. Effective. We deliver holistic cleaning solutions that enhance your performance, reputation, and competitiveness.</p>
             <a href="#contact" class="cta-button">Get in Touch</a>
@@ -1002,8 +1054,10 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="about-container">
-            <h2 class="section-title">About Uluju</h2>
-            <p class="section-subtitle">Excellence in Commercial, Residential & Industrial Cleaning</p>
+            <div class="section-header">
+                <h2 class="section-title">About Uluju</h2>
+                <p class="section-subtitle">Excellence in Commercial, Residential & Industrial Cleaning</p>
+            </div>
             
             <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.1rem;">
                 Established in 2018, Uluju Cleaning Solutions has become a reputable company in commercial, residential, industrial cleaning and waste management. We offer holistic hygiene and sanitation premium services with client-specific and measurable outcomes.
@@ -1028,12 +1082,14 @@
 
     <!-- Services Section -->
     <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Comprehensive Cleaning Solutions Tailored to Your Needs</p>
+        <div class="section-header">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">Comprehensive Cleaning Solutions Tailored to Your Needs</p>
+        </div>
         
         <div class="services-grid">
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=800');"></div>
+                <div class="service-image" style="background-image: url('./assets/commercialclean.png');"></div>
                 <div class="service-content">
                     <h3>Commercial Cleaning</h3>
                     <p>Holistic cleaning services for commercial and industrial properties with client-specific outcomes.</p>
@@ -1047,7 +1103,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800');"></div>
+                <div class="service-image" style="background-image: url('./assets/officemanagement.png');"></div>
                 <div class="service-content">
                     <h3>Executive Office Management</h3>
                     <p>Premium office cleaning services tailored to suit each client's needs.</p>
@@ -1061,7 +1117,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800');"></div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
                 <div class="service-content">
                     <h3>High Window Cleaning</h3>
                     <p>Sparkling clean windows with competent workers and up-to-date techniques and machinery.</p>
@@ -1075,7 +1131,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800');"></div>
+                <div class="service-image" style="background-image: url('./assets/outdoorclean.png');"></div>
                 <div class="service-content">
                     <h3>General & Deep Cleaning</h3>
                     <p>Comprehensive cleaning for bedrooms, bathrooms, kitchens, and living rooms.</p>
@@ -1089,7 +1145,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800');"></div>
+                <div class="service-image" style="background-image: url('./assets/gardening.png');"></div>
                 <div class="service-content">
                     <h3>Gardening & Landscaping</h3>
                     <p>Monthly or seasonal maintenance for a beautifully maintained landscape.</p>
@@ -1103,7 +1159,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800');"></div>
+                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');"></div>
                 <div class="service-content">
                     <h3>Waste Management</h3>
                     <p>Collection of various waste types from commercial to residential properties.</p>
@@ -1117,7 +1173,7 @@
             </div>
 
             <div class="service-card">
-                <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1563453392212-326f5e854473?w=800');"></div>
+                <div class="service-image" style="background-image: url('./assets/sanitarybins.png');"></div>
                 <div class="service-content">
                     <h3>Sanitary Bins Services</h3>
                     <p>Essential services for offices and shared facilities with proper disposal solutions.</p>
@@ -1134,8 +1190,10 @@
 
     <!-- Values Section -->
     <section id="values" class="values">
-        <h2 class="section-title" style="color: white;">Our Values</h2>
-        <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">The Principles That Drive Our Excellence</p>
+        <div class="section-header">
+            <h2 class="section-title">Our Values</h2>
+            <p class="section-subtitle">The Principles That Drive Our Excellence</p>
+        </div>
         
         <div class="values-grid">
             <div class="value-item">
@@ -1167,12 +1225,14 @@
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
-        <h2 class="section-title">Get in Touch</h2>
-        <p class="section-subtitle">Ready to Experience Premium Cleaning Solutions?</p>
+        <div class="section-header">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">Ready to Experience Premium Cleaning Solutions?</p>
+        </div>
         
         <div class="contact-container">
             <div class="contact-info">
-                <h3 style="color: #107c5b; margin-bottom: 2rem; font-size: 1.8rem;">Contact Information</h3>
+                <h3 style="color: var(--gold); margin-bottom: 2rem; font-size: 1.8rem;">Contact Information</h3>
                 
                 <div class="contact-item">
                     <h3>📧 Email</h3>
@@ -1191,14 +1251,14 @@
             </div>
 
             <div class="contact-info">
-                <h3 style="color: #107c5b; margin-bottom: 1rem; font-size: 1.8rem;">Why Choose Uluju?</h3>
+                <h3 style="color: var(--gold); margin-bottom: 1rem; font-size: 1.8rem;">Why Choose Uluju?</h3>
                 <p style="margin-bottom: 1.5rem; line-height: 1.8;">
                     Uluju Cleaning Solutions seeks to be a preferred cleaning solutions provider. We achieve this through our unwavering commitment to quality, consistency, and customer satisfaction.
                 </p>
                 <p style="margin-bottom: 1.5rem; line-height: 1.8;">
                     Our organizational culture provides for continual investment in our people through education and service to others, ensuring you receive the best possible service every time.
                 </p>
-                <a href="mailto:info@ulujuinvest.co.za" class="cta-button" style="color: #107c5b;">Request a Quote</a>
+                <a href="mailto:info@ulujuinvest.co.za" class="cta-button" style="color: var(--navy-blue);">Request a Quote</a>
             </div>
         </div>
     </section>
@@ -1210,7 +1270,7 @@
     </footer>
 
     <!-- Scroll to top button -->
-    <button class="scroll-top" id="scrollTop"></button>
+    <button class="scroll-top" id="scrollTop">↑</button>
 
     <script>
         // Mobile Navigation Toggle
